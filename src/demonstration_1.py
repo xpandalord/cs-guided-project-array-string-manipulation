@@ -22,4 +22,23 @@ There is no index that satisfies the conditions in the problem statement.
 """
 def pivot_index(nums):
     # Your code here
+    # single-element arrays would just return index 0
+    # if there's no left side, consider the left side to be 0
+    # if there's no right side, consider the right side to be 0
 
+    # iterate over the nums
+    for i in range(len(nums)):
+        # figure out the sum of the left side
+        # use slicing syntax to get everything up to but not including i
+        left = sum(nums[:i])
+        # figure out the sum of the right side
+        # use slicing syntax to get everything after i
+        right = sum(nums[i+1:])
+        # check if they're equal
+        if left ==  right:
+            # if they're equal, return that index
+            return i
+    
+    # if we get through the entire loop, we didn't find an element
+    # that satisfied the criteria, so we'll return -1
+    return -1
